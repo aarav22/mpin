@@ -3,8 +3,6 @@ from charm.schemes.ibenc.ibenc_bf01 import IBE_BonehFranklin
 from charm.toolbox.IBEnc import IBEnc
 from charm.toolbox.hash_module import Hash,int2Bytes,integer
 
-import pickle
-import dill
 import json
 group = PairingGroup('BN254')
 
