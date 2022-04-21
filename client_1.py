@@ -6,6 +6,7 @@ from charm.toolbox.hash_module import Hash,int2Bytes,integer
 import json
 
 id="aarav.varshney@gmail.com"
+pin=1234
 
 group = PairingGroup('BN254')
 client_key = group.random(G1)
@@ -29,7 +30,7 @@ client_secret = master_secret * A
 
 
 # token calculation: (s - pin)A
-
+token =  client_secret - pin * A
 # time permit:
 
 # Authentication:
@@ -41,11 +42,15 @@ U = x*A
 cs_ser = group.serialize(client_secret)
 x_ser = group.serialize(x)
 U_ser = group.serialize(U)
+token_ser = group.serialize(token)
+A_ser = group.serialize(A)
 
 creds = {
     "cs_ser": cs_ser,
     "x_ser": x_ser,
     "U_ser": U_ser,
+    "token_ser": token_ser,
+    "A_ser": A_ser
 }
 
 # encode master_secret to bytes:
